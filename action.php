@@ -1,22 +1,17 @@
 <?php
+	$koneksi= mysqli_connect("localhost","root","","paw_per_6");
+	$prodi = $_POST['prodi'];
+	$nama = $_POST['nama_mhs'];
+	$alamat = $_POST['alamat'];
 
-$servername ="localhost";
-$username ="root";
-$password ="";
-$dbname = "paw_per_6";
-$koneksi= mysqli_connect("localhost","root","","paw_per_6");
-$id = $_POST['id_mhs'];
-$prodi = $_POST['id_prodi'];
-$nama = $_POST['nama_Mhs'];
-$alamat = $_POST['alamat'];
-$sql = "INSERT INTO mhs VALUES ('$id','$prodi','$nama','$alamat')";
-$hasil = mysqli_query($koneksi, $sql);
-if (!$hasil) {
-	echo "eksekusi tambah data gagal";
-}else {
-	echo "eksekusi tambah data mahasiswa berhasil <br>";
-	echo "<a href='mhs.php'>show data </a>";
+	$tambah ="INSERT INTO mhs VALUES (NULL,'$prodi','$nama','$alamat')";
+	$hasil = mysqli_query($koneksi,$tambah);
+	$simpan =$_POST['simpan'];
+	if ($hasil) {
+	echo " <script>window.alert('Tambah Data Mahasiswa Berhasil'); document.location='mhs.php';</script>";
+	}else {
+	echo "<script>window.alert('Mohon Maaf, Tambah Data Mahasiswa Gagal'); document.location='mhs.php';</script>";
 	
-}
+	}
 
 ?>
